@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sunjinke.messageconvert.mapper.ParamKeyMapper">
+  <resultMap id="BaseResultMap" type="com.sunjinke.messageconvert.pojo.ParamKey">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="system_api_id" jdbcType="CHAR" property="systemApiId" />
+    <result column="out_param_key" jdbcType="VARCHAR" property="outParamKey" />
+    <result column="param_data_type" jdbcType="VARCHAR" property="paramDataType" />
+    <result column="param_desc" jdbcType="VARCHAR" property="paramDesc" />
+    <result column="out_param_node" jdbcType="INTEGER" property="outParamNode" />
+    <result column="out_parent_key" jdbcType="VARCHAR" property="outParentKey" />
+    <result column="in_param_key" jdbcType="VARCHAR" property="inParamKey" />
+    <result column="in_param_node" jdbcType="INTEGER" property="inParamNode" />
+    <result column="in_parent_key" jdbcType="VARCHAR" property="inParentKey" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="is_parent" jdbcType="INTEGER" property="isParent" />
+    <result column="array_size" jdbcType="INTEGER" property="arraySize" />
+    <result column="param_type" jdbcType="VARCHAR" property="paramType" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+</mapper>
