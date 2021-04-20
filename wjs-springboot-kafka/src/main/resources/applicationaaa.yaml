@@ -1,0 +1,15 @@
+
+server:
+  port: 8082
+
+spring:
+  application:
+    name: springboot-kafka
+kafka:
+  boostrap:
+    servers: localhost:9092
+  topic:
+    user: topic-user
+  group:
+    id: group-user
+
