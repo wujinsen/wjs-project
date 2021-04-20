@@ -17,3 +17,4 @@ public interface UserService {
 
     public Boolean supports(String name);
 }
+

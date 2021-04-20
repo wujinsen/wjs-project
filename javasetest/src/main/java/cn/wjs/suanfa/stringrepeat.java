@@ -29,7 +29,7 @@ public class stringrepeat {
 
             if (firstPosition  == lastPosition || firstPosition == i) {
 
-                sb.append(charWord);
+                sb.append(charWord);//
 
             }
         }
