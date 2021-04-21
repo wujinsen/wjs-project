@@ -1,6 +1,7 @@
 package cn.wjs;
 
 
+import cn.wjs.model.User;
 import cn.wjs.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -19,7 +20,11 @@ public class UserServiceTest {
 
     @Test
     public void userTest(){
-        userService.insertUser();
+        User user = new User();
+        user.setAge(1);
+        user.setName("aaa");
+        user.setId(1l);
+        userService.insertUser(user);
         log.info("=========================");
         userService.updateUser();
     }

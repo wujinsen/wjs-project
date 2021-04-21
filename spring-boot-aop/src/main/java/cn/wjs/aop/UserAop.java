@@ -1,9 +1,14 @@
 package cn.wjs.aop;
 
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.reflect.CodeSignature;
 import org.springframework.stereotype.Component;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Aspect
 @Component
@@ -20,7 +25,23 @@ public class UserAop {
     }
 
     @After("pointCut()")
-    public void afterAdvice() {
+    public void afterAdvice(JoinPoint joinPoint) {
+        Map<String, Object> param = new HashMap<>();
+
+        Object[] paramValues = joinPoint.getArgs();
+        String[] paramNames = ((CodeSignature)joinPoint.getSignature()).getParameterNames();
+        for (int i = 0; i < paramNames.length; i++) {
+            param.put(paramNames[i], paramValues[i]);
+        }
+        System.out.println("param: " + param);
+        System.out.println("args: " + joinPoint.getArgs());
+        System.out.println("target: "+joinPoint.getTarget());
+        System.out.println("name: "+ joinPoint.getSignature().getName());
+        System.out.println("afterAdvice");
+    }
+
+    @AfterReturning(returning = "ret", pointcut = "pointCut()")
+    public void afterAdvice(JoinPoint joinPoint, Object ret) {
         System.out.println("afterAdvice");
     }
 
