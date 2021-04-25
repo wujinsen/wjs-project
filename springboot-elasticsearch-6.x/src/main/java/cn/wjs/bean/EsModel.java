@@ -3,15 +3,9 @@ package cn.wjs.bean;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 import java.util.Date;
 
-/**
- * @Author: LX
- * @Description:
- * @Date: Created in 11:24 2018/11/6
- * @Modified by:
- */
+
 @Data
 @ToString
 @NoArgsConstructor

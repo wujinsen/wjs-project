@@ -1,6 +1,7 @@
 package cn.wjs.aop;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 @Aspect
 @Component
+@Slf4j
 public class UserAop {
 
     //@Pointcut("execution(* cn.wjs.service.UserService.insertUser(..))"|| cn.wjs.service.UserService.updateUser(..))")
