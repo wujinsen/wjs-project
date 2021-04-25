@@ -25,12 +25,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
 
 
 @Component
@@ -189,7 +189,6 @@ public class ElasticsearchUtil {
         if (StringUtils.isNotEmpty(fields)) {
             getRequestBuilder.setFetchSource(fields.split(","), null);
         }
-
         GetResponse getResponse = getRequestBuilder.execute().actionGet();
 
         return getResponse.getSource();
@@ -259,7 +258,7 @@ public class ElasticsearchUtil {
         LOGGER.debug("共查询到[{}]条数据,处理数据条数[{}]", totalHits, length);
 
         if (searchResponse.status().getStatus() == 200) {
-// 解析对象
+            // 解析对象
             List<Map<String, Object>> sourceList = setSearchResponse(searchResponse, highlightField);
 
             return new EsPage(startPage, pageSize, (int) totalHits, sourceList);
@@ -299,11 +298,11 @@ public class ElasticsearchUtil {
         }
 
         searchRequestBuilder.setQuery(query);
-
-        if (StringUtils.isNotEmpty(fields)) {
-            searchRequestBuilder.setFetchSource(fields.split(","), null);
-        }
-        searchRequestBuilder.setFetchSource(true);
+        //设置需要显示的字段
+//        if (StringUtils.isNotEmpty(fields)) {
+//            searchRequestBuilder.setFetchSource(fields.split(","), null);
+//        }
+         searchRequestBuilder.setFetchSource(true);
 
         if (StringUtils.isNotEmpty(sortField)) {
             searchRequestBuilder.addSort(sortField, SortOrder.DESC);
@@ -317,7 +316,7 @@ public class ElasticsearchUtil {
         LOGGER.info("\n{}", searchRequestBuilder);
 
         SearchResponse searchResponse = searchRequestBuilder.execute().actionGet();
-
+        LOGGER.info("searchResponse: {}", searchResponse);
         long totalHits = searchResponse.getHits().totalHits;
         long length = searchResponse.getHits().getHits().length;
 
@@ -325,11 +324,13 @@ public class ElasticsearchUtil {
 
         if (searchResponse.status().getStatus() == 200) {
             // 解析对象
-            return setSearchResponse(searchResponse, highlightField);
+           return setSearchResponse(searchResponse, highlightField);
+          //  return searchResponse.getHits();
         }
         return null;
 
     }
+
 
 
     /**

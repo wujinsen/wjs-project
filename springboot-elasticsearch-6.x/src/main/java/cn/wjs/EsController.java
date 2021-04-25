@@ -11,6 +11,7 @@ import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
@@ -21,6 +22,7 @@ import java.util.Random;
 @RestController
 @RequestMapping("/es")
 public class EsController {
+
 
     /**
      * 测试索引
@@ -58,9 +60,9 @@ public class EsController {
     @RequestMapping("/insertJson")
     public String insertJson() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id", DateUtil.formatDate(new Date()));
+        jsonObject.put("id", "id-" + new Random().nextInt(10000));
         jsonObject.put("age", 25);
-        jsonObject.put("name", "j-" + new Random(100).nextInt());
+        jsonObject.put("name", "j-" + new Random().nextInt(10000));
         jsonObject.put("date", new Date());
         String id = ElasticsearchUtil.addData(jsonObject, indexName, esType, jsonObject.getString("id"));
         return id;
@@ -74,8 +76,8 @@ public class EsController {
     @RequestMapping("/insertModel")
     public String insertModel() {
         EsModel esModel = new EsModel();
-        esModel.setId(DateUtil.formatDate(new Date()));
-        esModel.setName("赵六-" + new Random(100).nextInt());
+        esModel.setId("id-" + new Random().nextInt(10000));
+        esModel.setName("军七-" + new Random().nextInt(10000));
         esModel.setAge(30);
         esModel.setDate(new Date());
         JSONObject jsonObject = (JSONObject) JSONObject.toJSON(esModel);
@@ -142,19 +144,19 @@ public class EsController {
      * @return
      */
     @RequestMapping("/queryMatchData")
-    public String queryMatchData() {
+    public String queryMatchData(String name) {
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
         boolean matchPhrase = false;
         if (matchPhrase == Boolean.TRUE) {
             //不进行分词搜索
-            boolQuery.must(QueryBuilders.matchPhraseQuery("name", "m"));
+            boolQuery.must(QueryBuilders.matchPhraseQuery("name", name));
         } else {
-            boolQuery.must(QueryBuilders.matchQuery("name", "m-m"));
+            boolQuery.must(QueryBuilders.matchQuery("name", name));
         }
-        List<Map<String, Object>> list = ElasticsearchUtil.
-                searchListData(indexName, esType, boolQuery, 10, "name", null, "name");
+        List<Map<String, Object>> list = ElasticsearchUtil.searchListData(indexName, esType, boolQuery, 10, "name", null, "name");
         return JSONObject.toJSONString(list);
     }
+
 
     /**
      * 通配符查询数据
@@ -203,8 +205,8 @@ public class EsController {
     @RequestMapping("/queryDateRangeData")
     public String queryDateRangeData() {
         BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-        boolQuery.must(QueryBuilders.rangeQuery("date").from("2018-04-25T08:33:44.840Z")
-                .to("2019-04-25T10:03:08.081Z"));
+        boolQuery.must(QueryBuilders.rangeQuery("date").from("2021-04-25T00:33:44.840Z")
+                .to("2021-04-25T10:03:08.081Z"));
         List<Map<String, Object>> list = ElasticsearchUtil.searchListData(indexName, esType, boolQuery, 10, null, null, null);
         return JSONObject.toJSONString(list);
     }
@@ -223,12 +225,13 @@ public class EsController {
     public String queryPage(String startPage, String pageSize) {
         if (StringUtils.isNotBlank(startPage) && StringUtils.isNotBlank(pageSize)) {
             BoolQueryBuilder boolQuery = QueryBuilders.boolQuery();
-            boolQuery.must(QueryBuilders.rangeQuery("date").from("2018-04-25T08:33:44.840Z")
-                    .to("2019-04-25T10:03:08.081Z"));
+            boolQuery.must(QueryBuilders.rangeQuery("date").from("2021-04-25T00:00:44.840Z")
+                    .to("2021-04-25T23:03:08.081Z"));
             EsPage list = ElasticsearchUtil.searchDataPage(indexName, esType, Integer.parseInt(startPage), Integer.parseInt(pageSize), boolQuery, null, null, null);
             return JSONObject.toJSONString(list);
         } else {
             return "startPage或者pageSize缺失";
         }
+
     }
 }
