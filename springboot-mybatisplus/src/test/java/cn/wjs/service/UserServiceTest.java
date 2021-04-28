@@ -31,7 +31,6 @@ public class UserServiceTest {
 //        log.info("user: {}", user);
 
         log.info("result: {} ", userMapper.selectById(1));
-
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("id", 1);
         log.info("result: {} ", userMapper.selectOne(wrapper));
