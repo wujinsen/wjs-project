@@ -3,7 +3,9 @@ package cn.wjs.service;
 
 import cn.wjs.mapper.UserMapper;
 import cn.wjs.model.User;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +36,14 @@ public class UserServiceTest {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("id", 1);
         log.info("result: {} ", userMapper.selectOne(wrapper));
+    }
+
+    @Test
+    public void updateTest() {
+        UpdateWrapper<User> wrapper= new UpdateWrapper();
+        User user = new User();
+        user.setOrderNum(1);
+        userMapper.update(user, new LambdaQueryWrapper<User>().eq(User::getName,"aaa"));
     }
 
 }
