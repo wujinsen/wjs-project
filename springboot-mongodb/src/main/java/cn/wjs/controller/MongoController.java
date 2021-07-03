@@ -43,10 +43,10 @@ public class MongoController {
 //    public Object select(@RequestBody MongoVO mongoVO) {
 //
 //        //或者使用 mongo uri
-//        MongoClient mongoClient = MongoClients.create(("mongodb://yzl:Yzl12345#@192.168.32.170:17017/yzl?readPreference=secondary&maxStalenessSeconds=120&connectTimeoutMS=30000&socketTimeoutMS=30000&minpoolsize=32&maxpoolsize=128"));
+//        MongoClient mongoClient = MongoClients.create());
 //        //  获取数据库 & 集合
 //        //获取指定数据库对象
-//        MongoDatabase db = mongoClient.getDatabase("yzl");
+//        MongoDatabase db = mongoClient.getDatabase("");
 //        //获取指定集合对象
 //        MongoCollection<Document> blogs = db.getCollection(mongoVO.getTableName());
 //        JSONObject json = (JSONObject) JSON.toJSON((mongoVO.getJson()));
@@ -72,7 +72,7 @@ public class MongoController {
         log.info("result: {}", mongoClient);
         //  获取数据库 & 集合
         //获取指定数据库对象
-        MongoDatabase db = mongoClient.getDatabase("yzl");
+        MongoDatabase db = mongoClient.getDatabase("");
         log.info("db: {}", db);
         //获取指定集合对象
         MongoCollection<Document> blogs = db.getCollection("dispatch_rule");

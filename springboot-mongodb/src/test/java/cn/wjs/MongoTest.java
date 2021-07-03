@@ -97,7 +97,7 @@ public class MongoTest {
         //   MongoClient mongoClient = new MongoClient(new ServerAddress("127.0.0.1",27017),credential,options);   //连接对象
         //MongoClient，MongoCollection DBCollection
         //或者使用 mongo uri
-        MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb://yzl:Yzl12345#@192.168.32.170:17017/yzl?readPreference=secondary&maxStalenessSeconds=120&connectTimeoutMS=30000&socketTimeoutMS=30000&minpoolsize=32&maxpoolsize=128"));
+        MongoClient mongoClient = new MongoClient(new MongoClientURI(""));
 //        其中 mongo uri 的验证连接格式如下：
 //        mongodb://userName:password@host/?authSource=databaseName&ssh=true;
         log.info("result: {}", mongoClient);
@@ -105,7 +105,7 @@ public class MongoTest {
         //  获取数据库 & 集合
 
         //获取指定数据库对象
-        MongoDatabase db = mongoClient.getDatabase("yzl");
+        MongoDatabase db = mongoClient.getDatabase("");
         log.info("db: {}", db);
         //获取指定集合对象
         MongoCollection<Document> blogs = db.getCollection("staff_crowd_group");
