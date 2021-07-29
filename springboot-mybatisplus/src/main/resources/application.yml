@@ -1,4 +1,8 @@
 
+### 配置端口号
+server:
+  port: 8087
+
 # mybatis
 mybatis:
   typeAliasesPackage: cn.wjs.model

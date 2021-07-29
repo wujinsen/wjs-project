@@ -9,6 +9,7 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -20,12 +21,10 @@ import java.sql.Wrapper;
 @SpringBootTest
 public class UserServiceTest {
 
-
-
-    @Resource
+    @Autowired
     private UserService userService;
 
-    @Resource
+    @Autowired
     private UserMapper userMapper;
     @Test
     public void userServiceTest() {
