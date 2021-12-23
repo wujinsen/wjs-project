@@ -1,0 +1,29 @@
+### 配置端口号
+server:
+  port: 8086
+
+### xxl-job admin address list, such as "http://address" or "http://address01,http://address02"
+#xxl:
+#  job:
+#    admin:
+#      addresses: http://127.0.0.1:8080/xxl-job-admin
+#    accessToken:
+#    executor:
+#      appname: aaaa
+#      address:
+#      ip: 127.0.0.1
+#      port: 9998
+#      logpath: /Users/wujinsen/data/applogs/xxl-job/jobhandler
+#      logretentiondays: 30
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8081/xxl-job-admin
+    accessToken:
+    executor:
+      appname: aaaa
+      address:
+      ip: 127.0.0.1
+      port: 9997
+      logpath:
+      logretentiondays: 30
