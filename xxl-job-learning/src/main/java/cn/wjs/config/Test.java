@@ -15,10 +15,10 @@ public class Test {
      */
     @XxlJob("abc")
     public void demoJobHandler() throws Exception {
-        XxlJobHelper.log("XXL-JOB, Hello World.");
+//        XxlJobHelper.log("XXL-JOB, Hello World.");
         System.out.println("aaaa");
         for (int i = 0; i < 5; i++) {
-            XxlJobHelper.log("beat at:" + i);
+//            XxlJobHelper.log("beat at:" + i);
         }
         // default success
     }
