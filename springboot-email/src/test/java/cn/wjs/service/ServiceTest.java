@@ -21,7 +21,7 @@ public class ServiceTest {
      */
     @Test
     public void sendSimpleMail() {
-        mailService.sendSimpleMail("wujs@sunjinke.com", "发送邮件测试", "大家好，这是我用springboot进行发送邮件测试");
+        mailService.sendAttachmentMail("jinsen.wu@hitgoo.net", "发送邮件测试", "大家好，这是我用springboot进行发送邮件测试", "/Users/wujinsen/Pictures/7975421-f5c844f67e601df3.png");
     }
 
 }

@@ -25,6 +25,7 @@ public class MailServiceImpl implements MailService {
 
     @Autowired
     private JavaMailSender mailSender;
+
     @Override
     public void sendSimpleMail(String to, String subject, String content) {
 
