@@ -34,7 +34,8 @@ public class UserController {
         user.setName("张三");
         user.setAge(18);
         list.add(user);
-        // 这里注意 有同学反应使用swagger 会导致各种问题，请直接用浏览器或者用postman
+        // 这里注意 有同学反应使用
+        // swagger 会导致各种问题，请直接用浏览器或者用postman
         response.setContentType("application/vnd.ms-excel");
         response.setCharacterEncoding("utf-8");
         // 这里URLEncoder.encode可以防止中文乱码 当然和easyexcel没有关系
