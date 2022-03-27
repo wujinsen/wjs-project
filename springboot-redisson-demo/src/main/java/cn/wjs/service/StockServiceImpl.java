@@ -19,7 +19,6 @@ public class StockServiceImpl implements StockService{
         stock.setStockNum(stockNum);
         stockMapper.updateById(stock);
         stock = new Stock();
-        stock.getId().equals("q111");
         return true;
     }
 
