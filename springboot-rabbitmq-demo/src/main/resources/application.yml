@@ -1,0 +1,15 @@
+
+
+
+### 配置端口号
+server:
+  port: 8087
+
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+
+
