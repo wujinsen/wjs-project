@@ -5,11 +5,18 @@
 server:
   port: 8087
 
+#rabbitmq:
+#  host: localhost
+#  port: 5672
+#  username: guest
+#  password: guest
 rabbitmq:
-  host: localhost
+  host: 47.94.0.233
   port: 5672
-  username: guest
-  password: guest
+  virtual-host: vhost-lemonplay
+  username: test
+  password: 123456
+  publisher-confirms: true #如果对异步消息需要回调必须设置为true
 
 
 
