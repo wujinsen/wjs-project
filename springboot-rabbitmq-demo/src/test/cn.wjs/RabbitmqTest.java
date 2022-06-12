@@ -1,6 +1,8 @@
 package cn.wjs;
 
 
+import cn.wjs.model.User;
+import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -27,7 +29,7 @@ public class RabbitmqTest {
 
         rabbitTemplate.convertAndSend("moliExchange", routingKey2, message2);
     }
-
+    //接受消息
     @Test
     public void receiveTest(){
         String queueName = "moliQueue";
@@ -36,6 +38,7 @@ public class RabbitmqTest {
 
     }
 
+    //发送topic消息
     @Test
     public void sendTopicTest(){
         String routingKey = "order.1";
@@ -45,4 +48,13 @@ public class RabbitmqTest {
         rabbitTemplate.convertAndSend("moli_topic_exchange", routingKey, message);
         rabbitTemplate.convertAndSend("moli_topic_exchange", routingKey2, message2);
     }
+
+    @Test
+    public void sendUserTest() {
+        User user = new User();
+        user.setId(1);
+        user.setName("aaa");
+        rabbitTemplate.convertAndSend("moliExchange", "moliUser", JSON.toJSONString(user));
+    }
+
 }
