@@ -1,4 +1,4 @@
-package cn.wjs.send.listener;
+package cn.wjs.send.mqconfig;
 
 import cn.wjs.model.User;
 import com.alibaba.fastjson.JSON;
@@ -35,14 +35,20 @@ public class MoliListener {
 //        System.out.println("具体消息: " + JSON.toJSONString(user));
 //    }
 
-    @RabbitListener(queues = {"gift.send.room"})
+    @RabbitListener(queues = {"moliQueue3"})
     @RabbitHandler
     public void listenMoliQueue3(@Payload Message msg) throws Exception {
-       // User user = JSON.parseObject(msg.getBody(), User.class);
+
         System.out.println("moliQueue3 moli监听消息: " + msg);
+
+        try{
+            User user = JSON.parseObject(msg.getBody(), User.class);
+        }catch (Exception e){
+            System.out.println("=========: " + e);
+            throw  new Exception();
+        }
        // System.out.println("具体消息: " + JSON.toJSONString(user));
     }
-
 
 }
 

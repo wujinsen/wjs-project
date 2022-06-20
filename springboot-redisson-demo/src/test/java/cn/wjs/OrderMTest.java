@@ -36,6 +36,7 @@ public class OrderMTest {
     @Autowired
     private RedissonClient redissonClient;
 
+
     @Test
     public void insertTest() {
         OrderM order = new OrderM();
@@ -72,6 +73,10 @@ public class OrderMTest {
         //   lock.lock(10, TimeUnit.SECONDS);
         lock.lock();
         System.out.println(lock.isLocked());
+
+    }
+
+    public void test(){
 
     }
 

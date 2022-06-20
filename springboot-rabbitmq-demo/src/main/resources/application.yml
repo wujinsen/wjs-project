@@ -21,9 +21,16 @@ server:
 
 spring:
   rabbitmq:
-    host: 59.110.47.74
+    host: localhost
     port: 5672
-    username: admin
-    password: admin
-    virtual-host: my_vhost
+    username: guest
+    password: guest
+    listener:
+      simple:
+        retry:
+          enabled: true
+          max-attempts: 3
+          initial-interval: 2000
+        default-requeue-rejected: false
+    virtual-host: /
 
