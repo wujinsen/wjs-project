@@ -1,12 +1,10 @@
 package cn.wjs.controller;
 
-import cn.wjs.consumer.KafkaConsumerDemo;
-import cn.wjs.producer.KafkaProducer;
-import cn.wjs.producer.Student;
-import cn.wjs.producer.User;
+import com.alibaba.fastjson.JSON;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -16,34 +14,20 @@ import java.util.Random;
  */
 @RestController
 @RequestMapping("/kafka")
+@Slf4j
 public class KafkaController {
 
     @Autowired
-    private KafkaProducer kafkaProducer;
+    private KafkaTemplate template;
 
-    @Autowired
-    private KafkaConsumerDemo kafkaConsumerDemo;
-
-    @RequestMapping("/createMsg")
-    public void createMsg() {
+    @GetMapping(path = "/send/user")
+    public void sendFoo() {
         User user = new User();
-        user.setId(new Random().nextInt(100));
-        user.setName("aa");
+        user.setName("zhangsan");
         user.setAge(18);
-        kafkaProducer.sendUserMessage(user);
-    }
-    @RequestMapping("/createStudentMsg")
-    public void createStudentMsg() {
-        Student student = new Student();
-        student.setId(new Random().nextInt(100));
-        student.setName("王五");
-        student.setAge(20);
-      //  student.setPassword("123");
-        kafkaProducer.sendStudentMessage(student);
-    }
-    @RequestMapping("/readMsg")
-    public void readMsg() {
-        kafkaConsumerDemo.consume();
+        user.setStartTime(System.currentTimeMillis());
+        log.info("已发送数据: {}", JSON.toJSONString(user));
+        this.template.send("topic-user", user);
     }
 
 }

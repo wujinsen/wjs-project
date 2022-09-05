@@ -1,4 +1,4 @@
-package cn.wjs.producer;
+package cn.wjs.controller;
 
 import lombok.Data;
 
@@ -6,9 +6,6 @@ import lombok.Data;
 public class User {
 
     private String name;
-
-    private long id;
-
     private int age;
-
+    private Long startTime;
 }
