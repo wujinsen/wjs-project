@@ -4,7 +4,6 @@ import cn.wjs.bean.EsModel;
 import cn.wjs.bean.EsPage;
 import cn.wjs.utils.ElasticsearchUtil;
 import com.alibaba.fastjson.JSONObject;
-import org.apache.commons.httpclient.util.DateUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;

@@ -24,10 +24,12 @@ public class KafkaController {
     public void sendFoo() {
         User user = new User();
         user.setName("zhangsan");
-        user.setAge(18);
+        user.setAge(19);
         user.setStartTime(System.currentTimeMillis());
         log.info("已发送数据: {}", JSON.toJSONString(user));
-        this.template.send("topic-user", user);
+  //      this.template.send("aaa_topic", JSON.toJSONString(user));
+//        this.template.send("topic-user","aaa");
+        this.template.send("spa_user_pointdata_beta_topic", JSON.toJSONString(user));
     }
 
 }

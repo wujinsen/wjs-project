@@ -12,20 +12,20 @@ import org.springframework.stereotype.Component;
 public class KafkaConsumerListener {
 
 
+    @KafkaListener(id = "audit", topics = "spa_user_pointdata_beta_topic")
+    public void listenUserStr(String str) {
+      //  User user = JSON.parseObject(str, User.class);
+        log.info("消费数据====================: {}", str);
+    }
+
 //    @KafkaListener(id = "userGroup", topics = "topic-user")
-//    public void listenUserStr(String str) {
-//        User user = JSON.parseObject(str, User.class);
+//    public void listenUser(User user) {
 //        log.info("消费数据: {}", user);
 //    }
 
-    @KafkaListener(id = "userGroup", topics = "topic-user")
-    public void listenUser(User user) {
-        log.info("消费数据: {}", user);
-    }
-
-//    @KafkaListener(id = "dltGroup", topics = "topic1.DLT")
-//    public void dltListen(String in) {
-//        log.info("Received from DLT: " + in);
+//    @KafkaListener(id = "userGroup", topics = "aaa_topic")
+//    public void listenUser(String str) {
+//        log.info("消费数据: {}", str);
 //    }
 
 }
