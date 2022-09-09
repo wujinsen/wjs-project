@@ -79,7 +79,6 @@ public class UserNewActionTopicMessageVo implements Serializable {
      */
     private Integer productType;
 
-
     /**
      * 埋点信息
      */

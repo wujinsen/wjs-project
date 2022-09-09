@@ -8,73 +8,30 @@ import java.io.Serializable;
 public class BuriedPointBookInfoVo implements Serializable {
 
     /**
-     * 用户id
+     * 书籍ID
      */
-    private String userId;
+    private String bookId;
 
     /**
-     * 操作系统版本
+     * 章节ID
      */
-    private String osversion;
+    private String chapterId;
 
     /**
-     * 设备型号
+     * 阅读时间
      */
-    private String model;
+    private String time;
 
-    /**
-     * 网络状态
-     */
-    private String isWifi;
+    private String timestamp;
 
-    /**
-     * 设备ID
-     */
-    private String deviceId;
+    private String pageId;
 
-    /**
-     * 应用ID
-     */
-    private String appId;
+    private String pageIndex;
 
-    /**
-     * 版本号
-     */
-    private String versionCode;
+    private String totalPages;
 
-    /**
-     * 当前APP版本
-     */
-    private String versionName;
+    private String textSize;
 
-    /**
-     * 用户当前所在IP
-     */
-    private String userIp;
+    private String times;
 
-    /**
-     * 当前动作
-     */
-    private String currentAction;
-
-    /**
-     * 动作发生后展示的页面（同落地页面一个意思）
-     */
-    private String currentPage;
-
-    /**
-     * 用户来源渠道
-     */
-    private String channelName;
-
-    /**
-     * 品牌
-     */
-    private String brand;
-
-
-    /**
-     * 产品类型（1，书山；2 书路）
-     */
-    private Integer productType;
 }

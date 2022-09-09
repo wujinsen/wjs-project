@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 @Data
 public class BuriedPointBookData implements Serializable {
+
+    private Long id;
     /**
      * 用户id
      */
