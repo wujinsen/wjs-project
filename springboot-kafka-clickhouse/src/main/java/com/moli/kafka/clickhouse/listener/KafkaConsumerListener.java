@@ -46,9 +46,8 @@ public class KafkaConsumerListener {
         log.info("kafka userNewActionTopicMessageVo ====================: {}", userNewActionTopicMessageVo);
         log.info("kafka buriedPointBookInfoVo ====================: {}", buriedPointBookInfoVo);
         log.info("kafka buriedPointBookData ====================: {}", buriedPointBookData);
-        List<BuriedPointBookData> list = new ArrayList<>();
-        buildParameter(list, buriedPointBookInfoVo, userNewActionTopicMessageVo);
-
+        List<BuriedPointBookData> list = buildParameter(buriedPointBookInfoVo, userNewActionTopicMessageVo);
+        log.info("kafka list ====================: {}", list);
         Boolean b = buriedPointBookDataService.saveBatch(list);
         log.info("num ===== : {}", b);
 
@@ -64,30 +63,31 @@ public class KafkaConsumerListener {
 //        log.info("消费数据: {}", str);
 //    }
 
-    private void buildParameter(List<BuriedPointBookData> list, BuriedPointBookInfoVo buriedPointBookInfoVo, UserNewActionTopicMessageVo userNewActionTopicMessageVo) {
-
+    private List<BuriedPointBookData> buildParameter(BuriedPointBookInfoVo buriedPointBookInfoVo, UserNewActionTopicMessageVo userNewActionTopicMessageVo) {
+        List<BuriedPointBookData> list = new ArrayList<>();
         List<String> strArr = Arrays.asList(buriedPointBookInfoVo.getBookId().split(","));
 
-        BuriedPointBookData buriedPointBookData = new BuriedPointBookData();
-        buriedPointBookData.setId(IdGenerator.getId());
-        buriedPointBookData.setUserId(Integer.valueOf(userNewActionTopicMessageVo.getUserId()));
-        buriedPointBookData.setChannelName(userNewActionTopicMessageVo.getChannelName());
-        buriedPointBookData.setIp(userNewActionTopicMessageVo.getUserIp());
-        buriedPointBookData.setDeviceId(userNewActionTopicMessageVo.getDeviceId());
-        buriedPointBookData.setApplicationId(userNewActionTopicMessageVo.getAppId());
-        buriedPointBookData.setOsVersion(userNewActionTopicMessageVo.getOsversion());
-        buriedPointBookData.setBrand(userNewActionTopicMessageVo.getBrand());
-        buriedPointBookData.setDeviceModel(userNewActionTopicMessageVo.getModel());
-        buriedPointBookData.setNetworkType(userNewActionTopicMessageVo.getIsWifi());
-        buriedPointBookData.setVersionCode(userNewActionTopicMessageVo.getVersionCode());
-        buriedPointBookData.setVerisonName(userNewActionTopicMessageVo.getVersionName());
-        buriedPointBookData.setProductType(userNewActionTopicMessageVo.getProductType());
-        buriedPointBookData.setCurrentPage(userNewActionTopicMessageVo.getCurrentPage());
-        buriedPointBookData.setCurrentAction(userNewActionTopicMessageVo.getCurrentAction());
         for (String bookId : strArr) {
+            BuriedPointBookData buriedPointBookData = new BuriedPointBookData();
+            buriedPointBookData.setUserId(Integer.valueOf(userNewActionTopicMessageVo.getUserId()));
+            buriedPointBookData.setChannelName(userNewActionTopicMessageVo.getChannelName());
+            buriedPointBookData.setIp(userNewActionTopicMessageVo.getUserIp());
+            buriedPointBookData.setDeviceId(userNewActionTopicMessageVo.getDeviceId());
+            buriedPointBookData.setApplicationId(userNewActionTopicMessageVo.getAppId());
+            buriedPointBookData.setOsVersion(userNewActionTopicMessageVo.getOsversion());
+            buriedPointBookData.setBrand(userNewActionTopicMessageVo.getBrand());
+            buriedPointBookData.setDeviceModel(userNewActionTopicMessageVo.getModel());
+            buriedPointBookData.setNetworkType(userNewActionTopicMessageVo.getIsWifi());
+            buriedPointBookData.setVersionCode(userNewActionTopicMessageVo.getVersionCode());
+            buriedPointBookData.setVerisonName(userNewActionTopicMessageVo.getVersionName());
+            buriedPointBookData.setProductType(userNewActionTopicMessageVo.getProductType());
+            buriedPointBookData.setCurrentPage(userNewActionTopicMessageVo.getCurrentPage());
+            buriedPointBookData.setCurrentAction(userNewActionTopicMessageVo.getCurrentAction());
+            buriedPointBookData.setId(IdGenerator.getId());
             buriedPointBookData.setBookId(Integer.valueOf(bookId));
             list.add(buriedPointBookData);
         }
+        return list;
 
     }
 
