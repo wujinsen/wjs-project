@@ -13,9 +13,12 @@ public class ConfigController {
     @NacosValue(value = "${aaa}", autoRefreshed = true)
     private String aaa;
 
+    @NacosValue(value = "${userName}", autoRefreshed = true)
+    private String userName;
+
     @GetMapping(value = "/get")
     public String get() {
-        return aaa;
+        return aaa + "===" + userName;
     }
 
 }

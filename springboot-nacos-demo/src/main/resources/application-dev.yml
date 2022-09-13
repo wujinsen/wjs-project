@@ -1,12 +1,6 @@
 nacos:
-  username: nacos
-  password: nacos
   config:
-    prefix: nacos-demo
-    group: DEFAULT_GROUP
-    server-addr: http://127.0.0.1:8848
+    server-addr: 127.0.0.1:8848
     namespace: 4fa85588-6ab5-479b-aea2-2b1d2e52db7a
-    file-extension: yml
-    auto-refresh: true
 
-aaa: ccc
+
