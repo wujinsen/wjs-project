@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("config")
+@RequestMapping("/config")
 public class ConfigController {
 
-    @NacosValue(value = "${aaa}", autoRefreshed = true)
+    @NacosValue(value = "${aaa:aaa}", autoRefreshed = true)
     private String aaa;
 
-    @NacosValue(value = "${userName}", autoRefreshed = true)
+    @NacosValue(value = "${userName:bbb}", autoRefreshed = true)
     private String userName;
 
     @GetMapping(value = "/get")
