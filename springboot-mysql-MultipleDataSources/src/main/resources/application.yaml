@@ -1,0 +1,9 @@
+
+server:
+  port: 7001
+
+spring:
+  application:
+    name: springboot-multi-data-source
+  profiles:
+    active: dev

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>springboot-kafka-clickhouse</artifactId>
+    <artifactId>springboot-mysql-MultipleDataSources</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -16,6 +16,7 @@
         <slf4j.version>1.7.25</slf4j.version>
         <lombok.version>1.18.6</lombok.version>
         <fastjson.version>1.2.46</fastjson.version>
+        <druid-spring-boot-starter.version>1.1.14</druid-spring-boot-starter.version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
@@ -32,9 +33,15 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- 配置mysql数据库连接依赖 -->
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
         <dependency>
@@ -48,11 +55,6 @@
             <version>${fastjson.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>ru.yandex.clickhouse</groupId>
-            <artifactId>clickhouse-jdbc</artifactId>
-            <version>0.3.1</version>
-        </dependency>
         <!--mybatis-plus启动器-->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -64,7 +66,41 @@
             <artifactId>mybatis-plus-extension</artifactId>
             <version>3.4.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+            <version>3.4.1</version>
+        </dependency>
 
+        <!-- 添加hive依赖 -->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>3.1.2</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.jetty</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hive</groupId>
+                    <artifactId>hive-shims</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>javax-el</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
