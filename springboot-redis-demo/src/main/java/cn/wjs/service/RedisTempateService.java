@@ -1,13 +1,12 @@
 package cn.wjs.service;
 
-import org.springframework.data.redis.core.Cursor;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 @Component
@@ -15,6 +14,9 @@ public class RedisTempateService {
 
     @Resource
     private RedisTemplate<String, Object>  redisTemplate;
+
+    @Resource
+    private StringRedisTemplate redisTemplateString;
 
     /**
      *  获取指定前缀的一系列key
@@ -24,6 +26,11 @@ public class RedisTempateService {
      * @return
      */
     public Set<String> keys(String keyPrefix) {
+        redisTemplateString.opsForValue().set("aaa","bbb");
+        Map map = new HashMap<>();
+        map.put("aaa", "aaa");
+        map.put("bbb","bbb");
+        redisTemplate.opsForValue().set("map",map);
         String realKey = keyPrefix + "*";
         try {
             return redisTemplate.execute((RedisCallback<Set<String>>) connection -> {

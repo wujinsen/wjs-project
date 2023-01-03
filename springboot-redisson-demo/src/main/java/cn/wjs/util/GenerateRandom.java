@@ -2,7 +2,7 @@ package cn.wjs.util;
 
 public class GenerateRandom {
     public static void main(String[] args) {
-        System.out.println(name(8));
+        System.out.println(name(10));
     }
     /**
      * 生成随机数
