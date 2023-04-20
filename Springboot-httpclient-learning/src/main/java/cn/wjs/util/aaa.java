@@ -16,7 +16,7 @@ public class aaa {
     public static void main(String... args) throws IOException {
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost("http://localhost:1125/post/aaa");
+        HttpPost httpPost = new HttpPost("https://api.openai.com//v1/completions");
         Post post = new Post();
         post.setPostName("bbb");
         String strBody = JSON.toJSONString(post);
@@ -24,7 +24,7 @@ public class aaa {
         //设置请求头
         httpPost.setHeader("Content-Type", "application/json");
         httpPost.setHeader("Accept", "application/json");
-        httpPost.setHeader("Authorization", "login_token_491917c4-f080-435d-8b85-7df28c729622");
+        httpPost.setHeader("Authorization", "Bearer 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");
 
         System.out.println("Executing request " + httpPost.getRequestLine());
 

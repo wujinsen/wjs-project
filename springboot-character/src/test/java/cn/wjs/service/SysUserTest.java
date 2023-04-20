@@ -19,7 +19,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserTest {
+public class SysUserTest {
 
     @Autowired
     @Qualifier("userTwoServiceImpl")
@@ -33,7 +33,7 @@ public class UserTest {
 
     @Test
     public void UserTest() {
-        System.out.println("=====: " + userService.select("1"));
+        System.out.println("=====: " + userService.select(1l));
     }
 // https://blog.csdn.net/lbh199466/article/details/89156785
     // https://blog.51cto.com/u_15081050/2593112
@@ -46,7 +46,7 @@ public class UserTest {
        aaa.addAll(appContext.getBeansOfType(UserService.class).values());
 
         aaa.forEach(e->{
-            e.select("1");
+            e.select(1l);
         });
     }
     public static void main(String[] args) throws Exception {

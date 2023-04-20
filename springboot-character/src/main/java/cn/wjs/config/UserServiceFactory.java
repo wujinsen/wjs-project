@@ -29,7 +29,7 @@ public class UserServiceFactory {
             for (String key : maps.keySet()) {
                 UserService userService = maps.get(key);
                 if (userService.supports(name)){
-                    userService.select("1");
+                    userService.select(1l);
                     return;
                 }
             }

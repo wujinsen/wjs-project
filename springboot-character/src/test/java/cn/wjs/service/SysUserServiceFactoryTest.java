@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserServiceFactoryTest {
+public class SysUserServiceFactoryTest {
 
     @Autowired
     private UserServiceFactory userServiceFactory;

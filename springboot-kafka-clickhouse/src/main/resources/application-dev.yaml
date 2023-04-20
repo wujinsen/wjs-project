@@ -7,9 +7,12 @@ spring:
     name: springboot-kafka
   # datasource clickhouse
   datasource:
+#    driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+#    url: jdbc:clickhouse://localhost:8123/moli
     driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
-    url: jdbc:clickhouse://localhost:8123/moli
-
+    url: jdbc:clickhouse://172.21.0.31:8123/ss_user_device
+    username: book_ch
+    password: bookClickHouse@#$808908
   # kafka
   kafka:
     bootstrap-servers: localhost:9092

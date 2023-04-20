@@ -18,13 +18,10 @@ server:
 
 xxl:
   job:
+
     admin:
-      addresses: http://123.57.242.120:8081/xxl-job-admin
-    accessToken:
+      addresses: http://127.0.0.1:9888/xxl-job-admin
     executor:
-      appname: aaaa
-      address:
-      ip: 127.0.0.1
-      port: 9997
-      logpath:
-      logretentiondays: 30
+      appname: test1
+      port: 9998
+    accessToken: aaabbbccc
