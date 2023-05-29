@@ -1,21 +1,24 @@
 package cn.wjs.listener;
 
 
+import cn.wjs.controller.Student;
 import cn.wjs.controller.User;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.support.JstlUtils;
 
 @Component
 @Slf4j
 public class KafkaConsumerListener {
 
 
-    @KafkaListener(id = "audit", topics = "spa_user_pointdata_beta_topic")
+    @KafkaListener(groupId = "student", topics = "student")
     public void listenUserStr(String str) {
-      //  User user = JSON.parseObject(str, User.class);
+        Student student = JSON.parseObject(str, Student.class);
         log.info("消费数据====================: {}", str);
+        log.info("消费数据====================student: {}", student);
     }
 
 //    @KafkaListener(id = "userGroup", topics = "topic-user")

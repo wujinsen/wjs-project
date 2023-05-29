@@ -23,4 +23,5 @@ public class SysUserServiceFactoryTest {
     public void test(){
         userServiceFactory.select("UserServiceImpl");
     }
+
 }
